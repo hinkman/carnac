@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :questions, :only => [:new, :show]
+  get 'questions' => 'questions#new'
+  post 'questions' => 'questions#show'
+
+  resources :ops_job_states
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

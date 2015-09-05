@@ -1,0 +1,42 @@
+<h1>Listing ops_job_states</h1>
+
+<%= form_for(@ops_job_state) do |f| %>
+  <div class="field">
+      <%= f.label :job_name %><br>
+      <%= f.text_field :job_name %>
+  </div>
+<% end %>
+
+<hr>
+
+<table>
+  <thead>
+    <tr>
+      <th>Job name</th>
+      <th>Date started</th>
+      <th>Date completed</th>
+      <th>Status</th>
+      <th>Message</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ops_job_states.each do |ops_job_state| %>
+      <tr>
+        <td><%= ops_job_state.job_name %></td>
+        <td><%= ops_job_state.date_started %></td>
+        <td><%= ops_job_state.date_completed %></td>
+        <td><%= ops_job_state.status %></td>
+        <td><%= ops_job_state.message %></td>
+        <td><%= link_to 'Show', ops_job_state %></td>
+        <td><%= link_to 'Edit', edit_ops_job_state_path(ops_job_state) %></td>
+        <td><%= link_to 'Destroy', ops_job_state, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ops job state', new_ops_job_state_path %>
