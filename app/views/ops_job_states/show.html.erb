@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Job name:</strong>
+  <%= @ops_job_state.job_name %>
+</p>
+
+<p>
+  <strong>Date started:</strong>
+  <%= @ops_job_state.date_started %>
+</p>
+
+<p>
+  <strong>Date completed:</strong>
+  <%= @ops_job_state.date_completed %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @ops_job_state.status %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @ops_job_state.message %>
+</p>
+
+<%= link_to 'Edit', edit_ops_job_state_path(@ops_job_state) %> |
+<%= link_to 'Back', ops_job_states_path %>
