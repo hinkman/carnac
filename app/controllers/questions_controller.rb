@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :get_primaries, only: [:show, :new]
 
   # GET /questions
   # GET /questions.json
@@ -10,6 +11,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1.json
   def show
     @question = Question.new(question_params)
+
     if @question.valid?
       flash[:notice]='Question was successfully created.'
       render :show
@@ -68,13 +70,22 @@ class QuestionsController < ApplicationController
   # end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_question
-      @question = Question.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_question
+    @question = Question.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def question_params
-      params.require(:question).permit(:simple_key, :simple_value)
+  def get_primaries
+    @primaries = Array.new
+    ID_REGISTER.each do |key, val|
+       if val.has_key?(:is_primary) && val[:is_primary]
+         @primaries.push( "#{key}" )
+       end
     end
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def question_params
+    params.require(:question).permit(:simple_key, :simple_value)
+  end
 end

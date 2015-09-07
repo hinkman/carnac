@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.select(:simple_key, SIMPLE_KEY_CHOICES, {:include_blank => 'Must select one'}) %>
+    <%= f.select(:simple_key, @primaries, {:include_blank => 'Must select one'}) %>
   </div>
   <div class="field">
     <%= f.label :simple_value %><br>
